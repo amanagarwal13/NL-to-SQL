@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Natural Language To SQL</title>
+</head>
+<body>
+    <h1>Natural Language Input</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <form method="post">
+        <h2><label for="user_input">Enter your natural language input:</label><br></h2>
+        <textarea name="user_input" id="user_input" rows="4" cols="50">{{ user_input }}</textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <h2>SQL Query</h2>
+    <p>{{ output }}</p>
+    
+    <br>
+    <h2>Results</h2>
+    {% if results is not none %}
+    <table>
+        {% for row in results %}
+        <tr>
+            {% for column in row %}
+            <td>{{ column }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    
+    
+    
+</body>
+</html>
